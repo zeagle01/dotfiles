@@ -1,7 +1,7 @@
+echo "hello my .bashrc"
+
+#vim input mode in cli
 set -o vi
-echo "hello"
 
-alias config='/mingw64/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-config config --local status.showUntrackedFiles no
-
+#dot file git command alias
+alias dog="`which git` --git-dir=/c/Users/Admin/.dotfiles.git/ --work-tree=/c/Users/Admin"
