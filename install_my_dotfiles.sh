@@ -1,25 +1,6 @@
-#/bin/sh
 
-#first create
-#git init --bare $HOME/.cfg
-
-#alias git
-#alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-#don't show untracked files
-#config config --local status.showUntrackedFiles no
-
-#put alias into .bashrc
-#echo "alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'" >> $HOME/.bashrc
-
-#clone the existed repo
-#git clone --bare <git-repo-url> $HOME/.cfg
-
-#
-#echo ".cfg" >> .gitignore
-
-
-
+#exe this in any path
+#override home dotfiles with my dotfiles
 
 dotfile_dir=$HOME/.dotfiles.git/
 
