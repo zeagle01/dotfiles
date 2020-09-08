@@ -4,4 +4,4 @@ echo "hello my .bashrc"
 set -o vi
 
 #dot file git command alias
-alias dog="`which git` --git-dir=/c/Users/Admin/.dotfiles.git/ --work-tree=$HOME"
+alias dog="`which git` --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
