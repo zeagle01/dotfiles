@@ -20,3 +20,4 @@ nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <leader>" ea"<esc>bi"<esc>
 
 
+colorscheme industry
