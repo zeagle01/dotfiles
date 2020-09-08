@@ -7,7 +7,7 @@
 	name = zeagle
 	email = zeagle01@163.com
 [rerere]
-	enabled = true
+	enabled = false
 [merge]
 	conflictstyle = diff3
 	tool = vimdiff
