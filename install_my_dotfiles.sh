@@ -6,6 +6,9 @@
 dotfile_dir=$HOME/.dotfiles.git
 work_dir=$HOME
 
+echo "---------- dotfile_dir is $dotfile_dir--------------"
+echo "---------- work_dir is $work_dir--------------"
+
 
 #rm original first
 if [ -d "$dotfile_dir" ]; then
@@ -22,7 +25,7 @@ echo "----------- git parameter is $git_parameter"
 
 #
 echo "------------ clone repo -----------"
-git clone --bare https://www.github.com/zeagle01/dotfiles.git .dotfiles.git
+git clone --bare https://www.github.com/zeagle01/dotfiles.git $dotfile_dir
 
 alias dog="$git_parameter"
 
@@ -34,7 +37,7 @@ echo "------------ source dotfiles' .bashrc -------------"
 source $HOME/.bashrc
 
 cd ~
-echo "---------- cd to 'pwd' --------------"
+echo "---------- cd to `pwd` --------------"
 # set showUntrackedFiles
 echo "---------- set showUntrackedFiles -------------"
 dog config --local status.showUntrackedFiles no
