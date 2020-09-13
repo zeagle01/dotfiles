@@ -28,10 +28,10 @@ alias dog="$git_parameter"
 
 echo "------------ switch to master-----------"
 dog switch -f master
-
+dog status
 
 echo "------------ source dotfiles' .bashrc -------------"
-sh .bashrc
+source .bashrc
 
 # set showUntrackedFiles
 echo "---------- set showUntrackedFiles -------------"
