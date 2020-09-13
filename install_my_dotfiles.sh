@@ -15,7 +15,7 @@ fi
 git_exe=`which git`
 echo "----------- use git $git_exe --------"
 
-git_parameter="$git_exe --git-dir=$dotfile_dir --work-tree=$work_dir"
+git_parameter="$git_exe --git-dir=$dotfile_dir --work-tree=$HOME"
 echo "----------- git parameter is $git_parameter"
 
 #
