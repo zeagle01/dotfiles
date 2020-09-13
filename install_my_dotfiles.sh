@@ -1,11 +1,9 @@
 
 #exe this in any path
 #override home dotfiles with my dotfiles
-cd ~
-work_dir=`pwd`
-echo "---------- cd to $work_dir --------------"
 
-dotfile_dir=.dotfiles.git
+
+dotfile_dir=$HOME/.dotfiles.git
 
 #rm original first
 if [ -d "$dotfile_dir" ]; then
@@ -31,18 +29,22 @@ dog switch -f master
 
 
 echo "------------ source dotfiles' .bashrc -------------"
-source .bashrc
+source $HOME/.bashrc
 
+cd ~
+work_dir=`pwd`
+echo "---------- cd to $work_dir --------------"
 # set showUntrackedFiles
 echo "---------- set showUntrackedFiles -------------"
 dog config --local status.showUntrackedFiles no
+cd -
 
 echo "---------- set .dotfile.git as ignore -------------"
-echo ".dotfiles.git" >> .gitignore
+echo ".dotfiles.git" >> $HOME/.gitignore
 
 dog status
 
-cd -
+
 
 
 
