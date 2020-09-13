@@ -2,7 +2,8 @@
 #exe this in any path
 #override home dotfiles with my dotfiles
 cd ~
-echo "---------- cd to `pwd` --------------"
+work_dir=`pwd`
+echo "---------- cd to $work_dir --------------"
 
 dotfile_dir=.dotfiles.git
 
@@ -16,7 +17,7 @@ fi
 git_exe=`which git`
 echo "----------- use git $git_exe --------"
 
-git_parameter="\`which git\` --git-dir=$dotfile_dir --work-tree=`pwd`"
+git_parameter="$git_exe --git-dir=$dotfile_dir --work-tree=$work_dir"
 echo "----------- git parameter is $git_parameter"
 
 #
