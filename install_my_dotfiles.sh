@@ -4,6 +4,8 @@
 
 
 dotfile_dir=$HOME/.dotfiles.git
+work_dir=$HOME
+
 
 #rm original first
 if [ -d "$dotfile_dir" ]; then
@@ -15,7 +17,7 @@ fi
 git_exe=`which git`
 echo "----------- use git $git_exe --------"
 
-git_parameter="$git_exe --git-dir=$dotfile_dir --work-tree=$HOME"
+git_parameter="$git_exe --git-dir=$dotfile_dir --work-tree=$work_dir"
 echo "----------- git parameter is $git_parameter"
 
 #
@@ -32,8 +34,7 @@ echo "------------ source dotfiles' .bashrc -------------"
 source $HOME/.bashrc
 
 cd ~
-work_dir=`pwd`
-echo "---------- cd to $work_dir --------------"
+echo "---------- cd to 'pwd' --------------"
 # set showUntrackedFiles
 echo "---------- set showUntrackedFiles -------------"
 dog config --local status.showUntrackedFiles no
