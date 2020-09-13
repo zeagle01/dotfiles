@@ -28,7 +28,7 @@ alias dog="$git_parameter"
 
 echo "------------ switch to master-----------"
 dog switch -f master
-dog status
+
 
 echo "------------ source dotfiles' .bashrc -------------"
 source .bashrc
@@ -39,6 +39,8 @@ dog config --local status.showUntrackedFiles no
 
 echo "---------- set .dotfile.git as ignore -------------"
 echo ".dotfiles.git" >> .gitignore
+
+dog status
 
 cd -
 
