@@ -1,13 +1,7 @@
-[difftool "sourcetree"]
-	cmd = '' \"$LOCAL\" \"$REMOTE\"
-[mergetool "sourcetree"]
-	cmd = "'' "
-	trustExitCode = true
 [user]
 	name = zeagle
 	email = zeagle01@163.com
-[rerere]
-	enabled = false
-[merge]
-	conflictstyle = diff3
-	tool = vimdiff
+[core]
+	editor = vim
+[alias]
+	graph = log --oneline --all --graph

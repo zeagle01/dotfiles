@@ -7,7 +7,7 @@ set hlsearch incsearch
 set relativenumber
 set number
 set wrap
-set shiftwidth=4
+set shiftwidth=2
 set shiftround
 
 
