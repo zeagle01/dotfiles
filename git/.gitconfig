@@ -5,3 +5,5 @@
 	editor = vim
 [alias]
 	graph = log --oneline --all --graph
+[diff]
+  	tool = vimdiff
