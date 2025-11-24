@@ -45,11 +45,15 @@ class cmd_shell:
         self.process.stdin.write(command + "\n")
         self.process.stdin.flush()
 
+        self.process.stdin.write(_return_code_cmd()+ "\n")
+        self.process.stdin.flush()
+
         self.process.stdin.write(_end_cmd()+ "\n")
         self.process.stdin.flush()
 
         stdout_lines = []
         stderr_lines = []
+        retcode = 0
 
 
         while True:
@@ -67,7 +71,6 @@ class cmd_shell:
             except queue.Empty:
                 pass
 
-            #if (something_wrong  and  _check_cmd_begins(stdout_lines)) or _check_output_complete(stdout_lines) :
             if _check_output_complete(stdout_lines):
                 break  # No more output for now
 
@@ -78,12 +81,14 @@ class cmd_shell:
         if len(stderr_lines)>0:
             err=''.join(stderr_lines)
             print(err)
-            #exit(1)
+
+        retcode = _get_return_code(stdout_lines)
+        if retcode!=0:
+            exit(retcode)
 
 
     def _reader(self, pipe, q):
         for line in pipe:
-            #print(line.strip())
             q.put(line)
 
     def close(self):
@@ -96,7 +101,10 @@ def _check_cmd_begins(lines):
     return len(lines) > 0 and  lines[-1].strip() == end_str
 
 def _check_output_complete(lines):
-    return len(lines)>0 and  lines[0][0]=='$' and  lines[-1].strip() == end_str
+    return len(lines)>0 and  lines[0][0]=='$' and  lines[-1].strip() == end_str 
+
+def _get_return_code(lines):
+    return int(lines[-2].strip())
 
 def _echo_cmd(cmd):
     return 'echo $ '+ cmd
@@ -104,6 +112,8 @@ def _echo_cmd(cmd):
 def _end_cmd():
     return 'echo '+ end_str
 
+def _return_code_cmd():
+    return 'echo $?'
 
 
 
@@ -136,13 +146,19 @@ def create_link(entry_path,depth,is_dir,cmd):
 
         target_path = os.path.abspath(entry_path)
         link_path = os.path.abspath(link_name)
-        target_path=replace_seperator(target_path)
-        link_path=replace_seperator(link_path)
+        target_path = replace_seperator(target_path)
+        link_path = replace_seperator(link_path)
 
         print(f'create link: {target_path} <- {link_path}');
         if os.path.exists(link_path):
            cmd.run('rm',link_path,'-rf')
         os.symlink(target_path,link_path)
+
+        parent_name=os.path.dirname(target_path)
+        take_effect_file = os.path.join(parent_name,'take_effect.sh')
+        take_effect_file = replace_seperator(take_effect_file)
+        if os.path.exists(take_effect_file):
+            cmd.run('sh',take_effect_file)
 
 
 cmd = cmd_shell()
