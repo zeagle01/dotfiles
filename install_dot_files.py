@@ -23,6 +23,8 @@ class cmd_shell:
             #shell=True,
             bufsize=1,
             env=os.environ,
+            universal_newlines=True,
+            encoding='utf-8',
         )
 
         # two queues: one for stdout, one for stderr
